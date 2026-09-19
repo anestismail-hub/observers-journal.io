@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="glowGold" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e8c298" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#d4a574" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#d4a574" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowTeal" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#a8d8c8" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#7fb8a8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowCoral" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e0b0a0" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#c89080" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Центральное свечение -->
+  <circle cx="100" cy="100" r="90" fill="url(#glowGold)" opacity="0.35"/>
+  <circle cx="100" cy="100" r="70" fill="url(#glowTeal)" opacity="0.25"/>
+
+  <!-- Внешнее кольцо (золото) -->
+  <circle cx="100" cy="100" r="90" fill="none" stroke="#d4a574" stroke-width="0.8" opacity="0.5"/>
+  <circle cx="100" cy="10" r="3" fill="#d4a574" filter="url(#softGlow)"/>
+
+  <!-- Второе кольцо (бирюза) -->
+  <circle cx="100" cy="100" r="72" fill="none" stroke="#7fb8a8" stroke-width="0.7" opacity="0.55"/>
+  <circle cx="100" cy="172" r="2.5" fill="#7fb8a8" filter="url(#softGlow)"/>
+
+  <!-- Третье кольцо (золото, ярче) -->
+  <circle cx="100" cy="100" r="54" fill="none" stroke="#e8c298" stroke-width="0.9" opacity="0.7"/>
+  <circle cx="154" cy="100" r="2.5" fill="#e8c298" filter="url(#softGlow)"/>
+
+  <!-- Внутреннее кольцо (коралл) -->
+  <circle cx="100" cy="100" r="36" fill="none" stroke="#c89080" stroke-width="0.7" opacity="0.6"/>
+  <circle cx="100" cy="136" r="2" fill="#c89080" filter="url(#softGlow)"/>
+
+  <!-- Пунктирное внутреннее кольцо -->
+  <circle cx="100" cy="100" r="22" fill="none" stroke="#a8d8c8" stroke-width="0.5" opacity="0.4" stroke-dasharray="2 4"/>
+
+  <!-- Центральная звезда ✦ -->
+  <g filter="url(#softGlow)">
+    <path d="M 100 68 L 104 96 L 132 100 L 104 104 L 100 132 L 96 104 L 68 100 L 96 96 Z" 
+          fill="#e8c298" opacity="0.95"/>
+    <path d="M 100 68 L 104 96 L 132 100 L 104 104 L 100 132 L 96 104 L 68 100 L 96 96 Z" 
+          fill="#d4a574" opacity="0.4"/>
+  </g>
+</svg>

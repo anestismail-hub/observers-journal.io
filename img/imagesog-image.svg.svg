@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="30%" r="90%">
+      <stop offset="0%" stop-color="#132338"/>
+      <stop offset="50%" stop-color="#0d1826"/>
+      <stop offset="100%" stop-color="#080f1a"/>
+    </radialGradient>
+    <radialGradient id="glowG" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e8c298" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#d4a574" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Звёзды -->
+  <g fill="#ebe2d0" opacity="0.5">
+    <circle cx="120" cy="80" r="1.2"/><circle cx="340" cy="140" r="0.9"/>
+    <circle cx="580" cy="60" r="1.5"/><circle cx="820" cy="110" r="1"/>
+    <circle cx="1050" cy="90" r="1.3"/><circle cx="200" cy="500" r="1"/>
+    <circle cx="980" cy="520" r="1.2"/><circle cx="700" cy="560" r="0.8"/>
+    <circle cx="420" cy="540" r="1.1"/><circle cx="1100" cy="380" r="0.9"/>
+  </g>
+
+  <!-- Свечение -->
+  <circle cx="600" cy="315" r="300" fill="url(#glowG)" opacity="0.25"/>
+
+  <!-- Сигил слева -->
+  <g transform="translate(140, 200) scale(1.15)" filter="url(#glow)">
+    <circle cx="100" cy="100" r="90" fill="none" stroke="#d4a574" stroke-width="0.8" opacity="0.5"/>
+    <circle cx="100" cy="100" r="72" fill="none" stroke="#7fb8a8" stroke-width="0.7" opacity="0.55"/>
+    <circle cx="100" cy="100" r="54" fill="none" stroke="#e8c298" stroke-width="0.9" opacity="0.7"/>
+    <circle cx="100" cy="100" r="36" fill="none" stroke="#c89080" stroke-width="0.7" opacity="0.6"/>
+    <circle cx="100" cy="100" r="22" fill="none" stroke="#a8d8c8" stroke-width="0.5" opacity="0.4" stroke-dasharray="2 4"/>
+    <path d="M 100 68 L 104 96 L 132 100 L 104 104 L 100 132 L 96 104 L 68 100 L 96 96 Z" fill="#e8c298"/>
+  </g>
+
+  <!-- Текст -->
+  <g font-family="Georgia, serif" text-anchor="start">
+    <text x="450" y="260" font-family="Georgia, serif" font-size="22" fill="#a8d8c8" letter-spacing="8" opacity="0.9">
+      THE OBSERVER'S JOURNAL
+    </text>
+    <text x="450" y="340" font-family="Georgia, serif" font-size="72" fill="#e8c298" font-weight="500" letter-spacing="2">
+      Дневник
+    </text>
+    <text x="450" y="415" font-family="Georgia, serif" font-size="72" fill="#e8c298" font-weight="500" letter-spacing="2">
+      Наблюдателя
+    </text>
+    <text x="450" y="480" font-family="Georgia, serif" font-size="22" fill="#8a8275" font-style="italic" letter-spacing="1">
+      Записки Того, Кто Смотрит · Anestis
+    </text>
+  </g>
+
+  <!-- Декоративные линии -->
+  <line x1="450" y1="510" x2="1150" y2="510" stroke="#d4a574" stroke-width="0.6" opacity="0.35"/>
+</svg>
