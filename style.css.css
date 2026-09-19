@@ -1,0 +1,8 @@
+.sigil-img{
+  width:100%;
+  height:100%;
+  animation:sigPulse 5s ease-in-out infinite;
+  filter:drop-shadow(0 0 20px rgba(212,165,116,.5));
+  position:relative;
+  z-index:2;
+}

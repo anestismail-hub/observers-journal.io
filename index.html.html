@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- TITLE & SEO -->
+<title>Дневник Наблюдателя · The Observer's Journal · Anestis</title>
+<meta name="description" content="Книга диалога с Голосом, аскеза по Роберту Оксузяну, дыхание изобилия, псалом 90 и древняя игра Лила. Пространство ежедневной практики, самопознания и возвращения к себе.">
+<meta name="keywords" content="Дневник Наблюдателя, The Observer's Journal, аскеза, Оксузян, дыхание изобилия, псалом 90, Лила, медитация, самопознание, Anestis, Абраамян Арутюн, разговор с Богом, Уолш, практики, молитвы">
+<meta name="author" content="Абраамян Арутюн · Anestis">
+<meta name="theme-color" content="#080f1a">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Дневник Наблюдателя · The Observer's Journal">
+<meta property="og:description" content="Книга диалога с Голосом. Аскеза. Дыхание. Лила. Пространство ежедневной практики и возвращения к себе.">
+<meta property="og:image" content="images/og-image.svg">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:locale:alternate" content="en_US">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Дневник Наблюдателя · The Observer's Journal">
+<meta name="twitter:description" content="Книга диалога с Голосом. Аскеза. Дыхание. Лила. Путь Наблюдателя.">
+<meta name="twitter:image" content="images/og-image.svg">
+
+<!-- FAVICON -->
+<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+<link rel="apple-touch-icon" href="images/favicon.svg">
+
+<!-- FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Marck+Script&family=Cormorant+Unicase:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- CSS -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="cursorGlow"></div>
+<div class="progress-bar" id="progressBar"></div>
+<canvas id="stars"></canvas>
+<div class="aurora"><div class="aur aur-1"></div><div class="aur aur-2"></div><div class="aur aur-3"></div></div>
+
+<nav class="top-nav">
+  <span class="brand">✦ ANESTIS</span>
+  <a href="#hero">Главная</a>
+  <a href="#book">Книга</a>
+  <a href="#algorithm">Алгоритм</a>
+  <a href="#portal">Разделы</a>
+  <a href="#askeza">Аскеза</a>
+  <a href="#calendar">Календарь</a>
+  <a href="#ritual">Ритуал</a>
+  <a href="#morning">Молитвы</a>
+  <a href="#breath">Дыхание</a>
+  <a href="#lila">Лила</a>
+  <a href="#journal">Дневник</a>
+  <div class="nav-controls">
+    <button class="nav-btn" id="ambientBtn" onclick="toggleAmbient()" title="Эмбиент">◐</button>
+    <button class="nav-btn" id="soundToggle" onclick="toggleSound()" title="Звук">✦</button>
+  </div>
+</nav>
+
+<header class="hero" id="hero">
+  <div class="sigil">
+    <img src="images/logo.svg" alt="Сигил Наблюдателя" class="sigil-img">
+  </div>
+  <h1>Дневник Наблюдателя</h1>
+  <p class="hero-sub">The Observer's Journal</p>
+  <p class="hero-desc">Записки Того, Кто Смотрит. Книга диалога с Голосом, аскеза по Роберту Оксузяну, дыхание изобилия и древняя игра самопознания — в едином пространстве для практики и возвращения к себе.</p>
+  <div class="time-pill"><span class="dot"></span><span id="timeText">Определяем время...</span></div>
+  <div class="hero-btns">
+    <a href="#book" class="btn gold">Открыть книгу</a>
+    <a href="#algorithm" class="btn teal">Единый алгоритм</a>
+  </div>
+  <div class="scroll-cue">↓</div>
+</header>
+
+<section class="section" id="affirm">
+  <div class="container">
+    <div class="affirm">
+      <span class="seal">✦</span>
+      <div class="affirm-label">Аффирмация дня</div>
+      <div class="affirm-text" id="affirmText">Загрузка...</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="book">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-label">Книга</div>
+      <h2>Дневник Наблюдателя</h2>
+      <p>Записки того, кто смотрит. Полная версия — 43 главы в 5 частях. Краткая — 16 ключевых глав.</p>
+    </div>
+    <div class="book-cover-wrap" id="bookCoverWrap">
+      <div class="book-cover" onclick="openBook()">
+        <div class="cover-inner">
+          <div class="cover-orn">✦</div>
+          <div class="cover-title">Дневник<br>Наблюдателя</div>
+          <div class="cover-sub">The Observer's Journal</div>
+          <div class="cover-author">Абраамян Арутюн · Anestis</div>
+        </div>
+        <div class="cover-open">Нажмите, чтобы открыть</div>
+      </div>
+    </div>
+    <div class="book-reader" id="bookReader">
+      <div class="reader-top">
+        <div class="reader-title">Дневник Наблюдателя</div>
+        <div class="reader-switch">
+          <button class="switch-btn active" id="btnFull" onclick="setMode('full')">Полная · 43</button>
+          <button class="switch-btn" id="btnShort" onclick="setMode('short')">Краткая · 16</button>
+        </div>
+        <div class="reader-count" id="readerCount">1 / 43</div>
+        <button class="reader-close" onclick="closeBook()" title="Закрыть">✕</button>
+      </div>
+      <div class="reader-chapter-list" id="chapterList"><div id="chapterLinks"></div></div>
+      <div class="reader-body" id="readerBody"></div>
+      <div class="reader-nav">
+        <button class="nav-arrow" id="prevBtn" onclick="prevChapter()">← Назад</button>
+        <button class="nav-toggle-chapters" onclick="toggleChapters()">☰ Содержание</button>
+        <button class="nav-arrow" id="nextBtn" onclick="nextChapter()">Вперёд →</button>
+      </div>
+      <div class="reader-progress"><div class="reader-progress-fill" id="readerProgressFill"></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="orn"><span class="sym">✦</span></div>
+
+<section class="section" id="algorithm">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-label">Единый Закон</div>
+      <h2>Алгоритм Пути</h2>
+      <p>Восемь шагов, собранных из всех традиций, книг и мастеров, встреченных на пути.</p>
+    </div>
+    <div class="algo-wrap" id="algoWrap"></div>
+  </div>
+</section>
+
+<div class="orn"><span class="sym">✦</span></div>
+
+<section class="section" id="portal">
+  <div class="container">
+    <div class="sec-head"><div class="sec-label">Пространство практики</div><h2>Выберите свой путь</h2><p>Девять врат. Каждое ведёт к своему инструменту.</p></div>
+    <div class="portal-grid">
+      <a href="#askeza" class="portal-card" onclick="blockSound('askeza')"><span class="glyph">✧</span><h3>Аскеза 21</h3><p>Практика Оксузяна с трекером</p></a>
+      <a href="#calendar" class="portal-card" onclick="blockSound('calendar')"><span class="glyph">☾</span><h3>Календарь</h3><p>Ваш путь практики по дням</p></a>
+      <a href="#ritual" class="portal-card" onclick="blockSound('ritual')"><span class="glyph">⚯</span><h3>Ритуал дня</h3><p>Пять шагов: утро и вечер</p></a>
+      <a href="#morning" class="portal-card" onclick="blockSound('prayer')"><span class="glyph">⚛</span><h3>Молитвы</h3><p>Слова, ставшие светом</p></a>
+      <a href="#breath" class="portal-card" onclick="blockSound('breath')"><span class="glyph">༄</span><h3>Дыхание</h3><p>Два этапа наполнения</p></a>
+      <a href="#psalm" class="portal-card" onclick="blockSound('psalm')"><span class="glyph">✵</span><h3>Псалом 90</h3><p>Древняя защита</p></a>
+      <a href="#lila" class="portal-card" onclick="blockSound('lila')"><span class="glyph">◈</span><h3>Лила</h3><p>Игра самопознания</p></a>
+      <a href="#media" class="portal-card" onclick="blockSound('media')"><span class="glyph">⏵</span><h3>Медиа</h3><p>Практики в записи</p></a>
+      <a href="#journal" class="portal-card" onclick="blockSound('journal')"><span class="glyph">✎</span><h3>Дневник</h3><p>Благодарности и заметки</p></a>
+    </div>
+  </div>
+</section>
+
+<div class="orn"><span class="sym">✦</span></div>
+
+<section class="section" id="askeza">
+  <div class="container">
+    <div class="sec-head"><div class="sec-label">Практика Оксузяна</div><h2>Аскеза 21 день</h2><p>Добровольное самоограничение ради цели.</p></div>
+    <div class="askeza-wrap">
+      <div class="flame"></div>
+      <div class="askeza-form">
+        <div class="field"><label for="askezaName">Ваше имя</label><input type="text" id="askezaName" placeholder="Например: Абраамян Арутюн"></div>
+        <div class="field"><label for="askezaFrom">От чего отказываюсь</label><input type="text" id="askezaFrom" placeholder="Например: от кофе, сладкого, алкоголя..."></div>
+        <div class="field"><label for="askezaGoal">Во благо чего (цель)</label><textarea id="askezaGoal" placeholder="Например: на развитие бизнеса, здоровье семьи..."></textarea></div>
+      </div>
+      <div class="askeza-actions">
+        <button class="act-btn" onclick="startAskeza()">✧ Начать</button>
+        <button class="act-btn" onclick="finishAskeza()">✓ Завершить</button>
+        <button class="act-btn" onclick="resetAskeza()">↺ Сбросить</button>
+      </div>
+      <div class="tracker" id="askezaTracker"></div>
+      <div class="progress-track"><div class="progress-fill" id="askezaProgressFill"></div></div>
+      <div class="askeza-status" id="askezaStatus">Заполните поля и нажмите «Начать аскезу».</div>
+      <div class="askeza-notes">
+        <h4>✦ Что такое аскеза</h4>
+        <p>Аскеза — это добровольное самоограничение. Отказываясь от привычки, вы высвобождаете энергию, которая раньше уходила на её поддержание.</p>
+        <h4>✦ Этапы</h4>
+        <ol>
+          <li><strong>Выбор цели</strong> — во благо чего вы держите аскезу.</li>
+          <li><strong>Выбор отказа</strong> — то, к чему вы сильно привязаны.</li>
+          <li><strong>Срок</strong> — не менее 21 дня. Можно дольше — до полугода.</li>
+          <li><strong>Начало</strong> — зажгите свечу. Скажите намерение вслух три раза.</li>
+          <li><strong>Соблюдение</strong> — не рассказывайте никому, кроме самых близких.</li>
+          <li><strong>Завершение</strong> — по окончании зажгите свечу. Поблагодарите и отпустите цель.</li>
+        </ol>
+        <h4>✦ Формулировка начала</h4>
+        <div class="askeza-intent">«Я, <em>[имя]</em>, заявляю перед тремя мирами о своём намерении взять Аскезу от <em>[что]</em> на 21 день. Всю высвободившуюся энергию и все плоды моей Аскезы я направляю на <em>[цель]</em>, во благо мне и всем живым существам. Да будет так!»</div>
+        <h4>✦ Формулировка завершения</h4>
+        <div class="askeza-intent">«Я, <em>[имя]</em>, заявляю перед тремя мирами об окончании Аскезы от <em>[что]</em> сроком 21 день. Всю высвободившуюся энергию и все плоды моей Аскезы я с благодарностью принимаю и направляю на <em>[цель]</em>. Во благо мне и всем живым существам. Да будет так!»</div>
+        <h4>✦ Правила</h4>
+        <ul>
+          <li>Не прерывайте аскезу. Если сорвались — начните заново.</li>
+          <li>Не рассказывайте тем, кто может обесценить.</li>
+          <li>Не хвастайтесь результатами — просто благодарите.</li>
+          <li>Не просите вещь. Просите поток и свободу выбора.</li>
+          <li>Не превращайте аскезу в наказание. Это дар себе и миру.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="orn"><span class="sym">✦</span></div>
+
+<section class="section" id="calendar">
+  <div class="container">
+    <div class="sec-head"><div class="sec-label">Ваш путь</div><h2>Календарь практик</h2><p>Отмечайте дни, когда выполняли ритуал.</p></div>
+    <div class="cal-wrap">
+      <div class="cal-head">
+        <h3>Практика</h3>
+        <div class="cal-controls">
+          <button onclick="calPrev()">←</button>
+          <select id="calYear" onchange="calRender()"></select>
+          <select id="calMonth" onchange="calRender()"></select>
+          <button onclick="calNext()">→</button>
+        </div>
+        <div class="cal-counter" id="calCounter">0 дней</div>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+      <div class="cal-hint">Нажмите на день, чтобы отметить.</div>
+    </div>
+  </div>
+</section>
+
+<div class="orn"><span class="sym">✦</span></div>
+
+<section class="section" id="ritual">
+  <div class="container">
+    <div class="sec-head"><div class="sec-label">Ежедневный ритуал</div><h2>Последовательность дня</h2><p>Пять шагов: утром — открытие, днём — защита, вечером — благодарение.</p></div>
+    <div class="ritual-row" id="ritualTracker"></div>
+  </div>
+</section>
+
+<section class="section" id="morning">
+  <div class="container">
+    <div class="sec-head"><div class="step-badge">I</div><div class="sec-label">Утро · Начало дня</div><h2>Открытие и разрешение</h2><p>Читайте после пробуждения, рука на сердце.</p></div>
+    <article class="prayer reveal">
+      <div class="aur-line"></div><div class="progress-hair"></div>
+      <h3>Утренняя молитва-разрешение</h3>
+      <div class="orn-mini">✦ ✦ ✦</div>
+      <div class="prayer-body">Я есть. Я дитя Творца. Я наблюдатель.<br>Благодарю этот день, своё тело, свою душу, свой путь.<br>Принимаю всё, что было, как часть роста.<br>Принимаю всё, что есть, как точку силы.<br><br>С этой секунды и отныне я разрешаю себе быть богатым.<br>С этой секунды и отныне я разрешаю себе быть благословенным.<br>Мне не нужно прорабатывать род, прошлые жизни и регрессы, чтобы быть достойным.<br>Я уже достоин. Я уже целостен. Я уже любим.<br><br>Я разрешаю себе быть счастливым прямо сейчас.<br>Я выбираю любовь. Я выбираю изобилие. Я выбираю лёгкость.<br>Мой мир ведёт меня к цели.<br>Я открыт потоку достатка.<br>Я принимаю. Я благодарю. Да будет так.</div>
+      <div class="reading-note">~1 минута чтения</div>
+      <div class="prayer-actions">
+        <button class="act-btn" onclick="copyPrayer(this)">Скопировать</button>
+        <button class="act-btn" onclick="markStep(1)">✓ Отметить</button>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="breath">
+  <div class="container">
+    <div class="sec-head"><div class="step-badge">II</div><div class="sec-label">Утро · Этап второй</div><h2>Дыхание Изобилия</h2><p>Два этапа. Можно остановить и продолжить.</p></div>
+    <div class="breath-stage" id="stage1">
+      <div class="stage-head">Этап 1 · Открытие сознания</div>
+      <div class="breath-circle-wrap"><div class="mandala"><div class="bead"></div></div><div class="breath-core" id="core1">4</div></div>
+      <div class="breath-hint" id="hint1">Нажмите «Начать этап 1»</div>
+      <div class="breath-timer">Осталось: <span id="timer1">8:00</span></div>
+      <div class="stage-btns">
+        <button class="stage-btn" id="btn1" onclick="startStage(1)">Начать этап 1</button>
+        <button class="stage-btn pause" id="pause1" onclick="togglePause(1)" style="display:none;">Пауза</button>
+        <button class="stage-btn small" id="reset1" onclick="resetStage(1)" style="display:none;">Сбросить</button>
+      </div>
+      <div class="stage-note" id="status1"></div>
+    </div>
+    <div class="breath-stage" id="stage2">
+      <div class="stage-head">Этап 2 · Наполнение силой</div>
+      <div class="breath-circle-wrap"><div class="mandala"><div class="bead"></div></div><div class="breath-core" id="core2">✦</div></div>
+      <div class="breath-hint" id="hint2">Готов, когда вы готовы</div>
+      <div class="breath-timer">Осталось: <span id="timer2">4:00</span></div>
+      <div class="stage-btns">
+        <button class="stage-btn" id="btn2" onclick="startStage(2)">Начать этап 2</button>
+        <button class="stage-btn pause" id="pause2" onclick="togglePause(2)" style="display:none;">Пауза</button>
+        <button class="stage-btn small" id="reset2" onclick="resetStage(2)" style="display:none;">Сбросить</button>
+      </div>
+      <div class="stage-note" id="status2">Совет: сначала этап 1. Но можно и сразу.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="abundance">
+  <div class="container">
+    <div class="sec-head"><div class="step-badge">III</div><div class="sec-label">Утро · Завершение</div><h2>Молитва о потоке изобилия</h2><p>После дыхания — попросите поток, а не конкретные вещи.</p></div>
+    <article class="prayer reveal">
+      <div class="aur-line"></div><div class="progress-hair"></div>
+      <h3>Молитва к Богу о потоке изобилия</h3>
+      <div class="orn-mini">✦ ✦ ✦</div>
+      <div class="prayer-body">Отец-Создатель, я обращаюсь к Тебе не как проситель, а как сын.<br>Ты знаешь мои нужды. Ты знаешь моё сердце.<br>Я не прошу конкретную машину, дом или вещь, потому что не знаю всех путей и вариантов.<br>Я прошу о Твоём потоке изобилия.<br><br>Дай мне столько ресурсов, сколько нужно для полной свободы.<br>Чтобы я мог обеспечить семью, помочь близким, жить без страха и выбирать лучшее из того, что есть.<br>Я открыт принимать. Я разрешаю себе быть богатым.<br>Я благодарю за то, что уже дано, и за то, что идёт.<br>Пусть это будет во благо мне и всем.<br>Направь меня к источникам дохода.<br>Открой двери. Дай мудрость управлять.<br>Я доверяю Тебе.<br>Аминь.</div>
+      <div class="reading-note">~1 минута чтения</div>
+      <div class="prayer-actions">
+        <button class="act-btn" onclick="copyPrayer(this)">Скопировать</button>
+        <button class="act-btn" onclick="markStep(3)">✓ Отметить</button>
+      </div>
+    </article>
+  </div>
+</section>
+
+<div class="orn"><span class="sym">✦</span></div>
+
+<section class="section" id="psalm">
+  <div class="container">
+    <div class="sec-head"><div class="step-badge">IV</div><div class="sec-label">День · Защита</div><h2>Псалом 90</h2><p>Читайте в течение дня, когда нужна защита и опора.</p></div>
+    <div class="psalm reveal">
+      <p>Живущий под кровом Всевышнего под сенью Всемогущего покоится, говорит Господу: «прибежище моё и защита моя, Бог мой, на Которого я уповаю!»</p>
+      <p>Он избавит тебя от сети ловца, от гибельной язвы, перьями Своими осенит тебя, и под крыльями Его будешь безопасен; щит и ограждение — истина Его.</p>
+      <p>Не убоишься ужасов в ночи, стрелы, летящей днём, язвы, ходящей во мраке, заразы, опустошающей в полдень.</p>
+      <p>Падут подле тебя тысяча и десять тысяч одесную тебя; но к тебе не приблизится: только смотреть будешь очами твоими и видеть возмездие нечестивым.</p>
+      <p>Ибо ты сказал: «Господь — упование моё»; Всевышнего избрал ты прибежищем твоим.</p>
+      <p>Не приключится тебе зло, и язва не приблизится к жилищу твоему; ибо Ангелам Своим заповедает о тебе — охранять тебя на всех путях твоих: на руках понесут тебя, да не преткнёшься о камень ногою твоею; на аспида и василиска наступишь; попирать будешь льва и дракона.</p>
+      <span class="highlight">«За то, что он возлюбил Меня, избавлю его; защищу его, потому что он познал имя Моё. Воззовёт ко Мне, и услышу его; с ним Я в скорби; избавлю его и прославлю его, долготою дней насыщу его, и явлю ему спасение Моё».</span>
+    </div>
+    <div style="text-align:center;margin-top:24px;">
+      <button class="act-btn" onclick="copyPsalm(this)">Скопировать</button>
+      <button class="act-btn" onclick="markStep(4)" style="margin-left:10px;">✓ Отметить</button>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="evening">
+  <div class="container">
+    <div class="sec-head"><div class="step-badge">V</div><div class="sec-label">Вечер · Завершение дня</div><h2>Благодарение и покой</h2><p>Читайте перед сном, лёжа или сидя.</p></div>
+    <article class="prayer reveal">
+      <div class="aur-line"></div><div class="progress-hair"></div>
+      <h3>Вечерняя молитва-благодарение</h3>
+      <div class="orn-mini">✦ ✦ ✦</div>
+      <div class="prayer-body">Благодарю себя и Вселенную за этот день.<br>Всё, что произошло, было во благо.<br>Я отпускаю день. Я отпускаю тревоги. Я отпускаю чужие ожидания.<br>Я прощаю себя и других.<br>Я принимаю уроки и дары этого дня.<br><br>С этой секунды и отныне я богат.<br>С этой секунды и отныне я благословен.<br>С этой секунды и отныне я любим.<br>С этой секунды и отныне я в потоке.<br><br>Я разрешаю себе отдыхать.<br>Я разрешаю себе принимать.<br>Я разрешаю себе быть счастливым навсегда.<br>Благодарю. Аминь.</div>
+      <div class="reading-note">~1 минута чтения</div>
+      <div class="prayer-actions">
+        <button class="act-btn" onclick="copyPrayer(this)">Скопировать</button>
+        <button class="act-btn" onclick="markStep(5)">✓ Отметить</button>
+      </div>
+    </article>
+  </div>
+</section>
+
+<div class="orn"><span class="sym">◈</span></div>
+
+<section class="section" id="lila">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-label">Джняна-чаупада · Игра Знания</div>
+      <h2>Лила</h2>
+      <p>Древняя индийская игра-медитация. Цель — не победа, а встреча с собой.</p>
+    </div>
+    <div class="lila-info-grid">
+      <div class="lila-legend plane"><span class="icon">◈</span><span class="lbl">Планы</span><span class="desc">Уровни бытия</span></div>
+      <div class="lila-legend virtue"><span class="icon">✧</span><span class="lbl">Добродетели</span><span class="desc">Ведущие вверх</span></div>
+      <div class="lila-legend vice"><span class="icon">◆</span><span class="lbl">Пороки</span><span class="desc">Ловушки Эго</span></div>
+      <div class="lila-legend realize"><span class="icon">✦</span><span class="lbl">Осознания</span><span class="desc">Прозрения</span></div>
+    </div>
+    <div class="lila-board-frame"><div class="board" id="lilaBoard"></div></div>
+    <div class="lila-controls">
+      <button class="dice-btn" id="diceBtn" onclick="rollDice()">Бросить кубик</button>
+      <div class="dice-face" id="diceFace">✦</div>
+    </div>
+    <div class="lila-stats">
+      <div>Позиция: <span class="v" id="lilaPos">—</span></div>
+      <div>Бросков: <span class="v" id="lilaRolls">0</span></div>
+      <div>Стрелы: <span class="v" id="lilaArrows">0</span></div>
+      <div>Змеи: <span class="v" id="lilaSnakes">0</span></div>
+    </div>
+    <div class="lila-info-box" id="lilaInfo">
+      <h4>Начните путешествие</h4>
+      <p>Нажмите «Бросить кубик». Чтобы войти, нужно выбросить 6. Нажмите на любую клетку, чтобы прочесть её суть.</p>
+      <p class="q">Лила учит не достигать цели, а наблюдать. Куда вы попадаете чаще?</p>
+    </div>
+    <div class="lila-log" id="lilaLog"><p class="highlight">✦ Добро пожаловать в Лилу. Ваше путешествие начинается.</p></div>
+  </div>
+</section>
+
+<div class="orn"><span class="sym">✦</span></div>
+
+<section class="section" id="media">
+  <div class="container">
+    <div class="sec-head"><div class="sec-label">Материалы</div><h2>Практики в записи</h2><p>Нажмите на превью, чтобы посмотреть.</p></div>
+    <div class="media-card">
+      <h3>Практика Роберта Оксузяна</h3>
+      <div class="video-preview" onclick="openVideo('https://rutube.ru/play/embed/b35dca85dee8ff70ba6930dc120aaecc/')"><div class="vlbl">Восполнение энергии · Смотреть</div></div>
+      <p class="media-note">Смотреть перед практикой дыхания.</p>
+    </div>
+    <div class="media-card">
+      <h3>Мориарти · Правильное дыхание</h3>
+      <div class="video-preview" onclick="openVideo('https://rutube.ru/play/embed/223fe0cbcbff37706ff7215d7dd9075f/')"><div class="vlbl">Успех · Власть · Сила · Смотреть</div></div>
+      <p class="media-note">Смотреть во время практики.</p>
+    </div>
+  </div>
+</section>
+
+<div class="orn"><span class="sym">✦</span></div>
+
+<section class="section" id="journal">
+  <div class="container">
+    <div class="journal">
+      <h3>Дневник благодарностей</h3>
+      <p class="journal-sub">Запишите три вещи, за которые вы благодарны сегодня.</p>
+      <textarea id="journalInput" placeholder="Сегодня я благодарен за..."></textarea>
+      <div class="journal-actions">
+        <button class="act-btn" onclick="saveJournal()">Сохранить</button>
+        <button class="act-btn" onclick="clearJournalInput()">Очистить</button>
+      </div>
+      <div class="journal-examples">
+        <strong>Примеры:</strong><br>
+        • «Сегодня я благодарен за тёплый разговор с ребёнком.»<br>
+        • «Благодарю за то, что нашёл силы не сорваться на работе.»<br>
+        • «Спасибо Вселенной за знак — неожиданный звонок.»
+      </div>
+      <div class="journal-list" id="journalList"></div>
+    </div>
+    <div class="support">
+      <h3>✎ Печать</h3>
+      <p>Распечатать молитвы, псалом и книгу в чистом виде.</p>
+      <button class="btn gold" onclick="window.print()">Распечатать</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="author-block">
+    <div class="author-name">Абраамян Арутюн</div>
+    <div class="author-alias">Anestis</div>
+    <div class="author-bio">Практик, исследователь сознания и аскезы. Дневник Наблюдателя — это пространство ежедневной практики, диалога с собой и возвращения к тишине, из которой рождается всё.</div>
+  </div>
+</footer>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Наверх">↑</button>
+
+<div class="video-modal" id="videoModal">
+  <div class="video-modal-inner">
+    <button class="video-close" onclick="closeVideo()">✕</button>
+    <iframe id="videoFrame" src="" allow="clipboard-write" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+  </div>
+</div>
+
+<!-- ПОДКЛЮЧЕНИЕ СКРИПТА -->
+<script src="script.js"></script>
+
+</body>
+</html>
